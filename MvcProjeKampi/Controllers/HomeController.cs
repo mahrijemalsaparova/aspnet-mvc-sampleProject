@@ -8,7 +8,7 @@ namespace MvcProjeKampi.Controllers
 {
     public class HomeController : Controller
     {
-        public class SQLLiteConnector : IConnection, IDisposable
+     //   public class SQLLiteConnector : IConnection, IDisposable 
         public ActionResult Index()
         {
             return View();
