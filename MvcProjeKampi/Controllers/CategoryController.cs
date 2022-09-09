@@ -50,7 +50,7 @@ namespace MvcProjeKampi.Controllers
 
             if (validationResult.IsValid)
             {
-                categoryManager.CategoryAddBL(item);
+                categoryManager.CategoryAdd(item);
                 return RedirectToAction("GetCategoryList");
             }
             else

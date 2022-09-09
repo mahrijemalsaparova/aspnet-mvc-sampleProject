@@ -13,6 +13,8 @@ namespace DataAccessLayer.Abstract
         void Insert(T item);
         void Delete(T item);    
         void Update(T item);
+        
+        T Get(Expression<Func<T,bool>> filter);
 
         //şartlı listeleme
         List<T> List(Expression<Func<T, bool>> filter);
