@@ -14,16 +14,15 @@ namespace MvcProjeKampi.Controllers
     {
         HeadingManager headinManager = new HeadingManager(new EfHeadingDal());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-<<<<<<< HEAD
+
         WriterManager writerManager = new WriterManager(new EfWriterDal());
+      
+
+      
+
         public ActionResult Index()
         {
-            //
-=======
-        WriterManager writerManager = new writerManager(new EfWriterDal());
-        public ActionResult Index()
-        {
->>>>>>> 88ec088103ec3f2f82ccd6ce07d4418af357fce2
+
             var headingValues = headinManager.GetList();
             return View(headingValues);
         }
@@ -37,7 +36,7 @@ namespace MvcProjeKampi.Controllers
                                                       Text = x.CategoryName,
                                                       Value = x.CategoryID.ToString()
                                                   }).ToList();
-<<<<<<< HEAD
+
 
            
 
@@ -49,16 +48,8 @@ namespace MvcProjeKampi.Controllers
                                                 }).ToList();
             ViewBag.vlc = valuecategory;
             ViewBag.vlw = valueWriter;
-=======
-             List<SelectListItem> valuewriter = (from x in writerManager.GetList()
-                                                  select new SelectListItem
-                                                  {
-                                                      Text = x.WriterName " + " x.WriterSurname,
-                                                      Value = x.WriterID.ToString()
-                                                  }).ToList();
-            ViewBag.vlc = valuecategory;
-             ViewBag.vlw = valuewriter;
->>>>>>> 88ec088103ec3f2f82ccd6ce07d4418af357fce2
+
+    
             return View();  
         }
 
@@ -70,8 +61,8 @@ namespace MvcProjeKampi.Controllers
             return RedirectToAction("Index");
         }
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 88ec088103ec3f2f82ccd6ce07d4418af357fce2
+
+
+
