@@ -17,6 +17,7 @@ namespace MvcProjeKampi.Controllers
         WriterManager writerManager = new WriterManager(new EfWriterDal());
         public ActionResult Index()
         {
+            //
             var headingValues = headinManager.GetList();
             return View(headingValues);
         }
