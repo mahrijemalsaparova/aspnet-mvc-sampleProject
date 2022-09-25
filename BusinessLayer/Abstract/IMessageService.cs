@@ -9,14 +9,14 @@ namespace BusinessLayer.Abstract
 {
     public interface IMessageService
     {
-        List<Message> GetListInbox();
-        List<Message> GetListSendbox();
+        List<Mesaj> GetListInbox();
+        List<Mesaj> GetListSendbox();
 
-        void MessageAdd(Message message);
+        void MessageAdd(Mesaj message);
 
-        Message GetByID(int id);
+        Mesaj GetByID(int id);
 
-        void MessageDelete(Message message);
-        void MessageUpdate(Message message);
+        void MessageDelete(Mesaj message);
+        void MessageUpdate(Mesaj message);
     }
 }

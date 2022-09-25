@@ -16,7 +16,7 @@ namespace MvcProjeKampi.Controllers
         public ActionResult Index()
         {
             var contactValues = contactManager.GetList();
-            return View(contactValues);
+            return View(contactValues); 
         }
 
         public ActionResult GetContactDetails(int id)

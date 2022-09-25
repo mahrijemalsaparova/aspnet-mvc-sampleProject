@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IMessageDal: IRepository<Message>
+    public interface IMessageDal: IRepository<Mesaj>
     {
 
     }

@@ -103,6 +103,22 @@
     <Compile Include="Migrations\202209201527516_mig_add_message.designer.cs">
       <DependentUpon>202209201527516_mig_add_message.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209241938565_mig_contact_add_date.cs" />
+    <Compile Include="Migrations\202209241938565_mig_contact_add_date.designer.cs">
+      <DependentUpon>202209241938565_mig_contact_add_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209242225259_change_message.cs" />
+    <Compile Include="Migrations\202209242225259_change_message.designer.cs">
+      <DependentUpon>202209242225259_change_message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209242234053_change_message_2.cs" />
+    <Compile Include="Migrations\202209242234053_change_message_2.designer.cs">
+      <DependentUpon>202209242234053_change_message_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209250740478_last_changes_for_mesaj.cs" />
+    <Compile Include="Migrations\202209250740478_last_changes_for_mesaj.designer.cs">
+      <DependentUpon>202209250740478_last_changes_for_mesaj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -144,6 +160,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209201527516_mig_add_message.resx">
       <DependentUpon>202209201527516_mig_add_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209241938565_mig_contact_add_date.resx">
+      <DependentUpon>202209241938565_mig_contact_add_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209242225259_change_message.resx">
+      <DependentUpon>202209242225259_change_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209242234053_change_message_2.resx">
+      <DependentUpon>202209242234053_change_message_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209250740478_last_changes_for_mesaj.resx">
+      <DependentUpon>202209250740478_last_changes_for_mesaj.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
