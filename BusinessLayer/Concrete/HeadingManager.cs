@@ -27,6 +27,12 @@ namespace BusinessLayer.Concrete
         {
             return _headingDal.List();
         }
+         
+        // Yazara ait başlıkların getirilmesi.
+        public List<Heading> GetListByWriter()
+        {
+            return _headingDal.List(x => x.WriterID == 1);
+        }
 
         public void HeadingAdd(Heading heading)
         {
@@ -35,7 +41,7 @@ namespace BusinessLayer.Concrete
 
         public void HeadingDelete(Heading heading)
         {
-           _headingDal.Update(heading);
+            _headingDal.Update(heading);
         }
 
         public void HeadingUpdate(Heading heading)

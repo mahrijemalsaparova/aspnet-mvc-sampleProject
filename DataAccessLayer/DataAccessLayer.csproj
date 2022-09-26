@@ -57,6 +57,7 @@
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IImageFileDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="EntityFramework\EfImageFileDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202208301744248_mig1.cs" />
@@ -118,6 +120,14 @@
     <Compile Include="Migrations\202209250740478_last_changes_for_mesaj.cs" />
     <Compile Include="Migrations\202209250740478_last_changes_for_mesaj.designer.cs">
       <DependentUpon>202209250740478_last_changes_for_mesaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209251428503_image_add.cs" />
+    <Compile Include="Migrations\202209251428503_image_add.designer.cs">
+      <DependentUpon>202209251428503_image_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209260805157_add_admin_table.cs" />
+    <Compile Include="Migrations\202209260805157_add_admin_table.designer.cs">
+      <DependentUpon>202209260805157_add_admin_table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,6 +182,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209250740478_last_changes_for_mesaj.resx">
       <DependentUpon>202209250740478_last_changes_for_mesaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209251428503_image_add.resx">
+      <DependentUpon>202209251428503_image_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209260805157_add_admin_table.resx">
+      <DependentUpon>202209260805157_add_admin_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
