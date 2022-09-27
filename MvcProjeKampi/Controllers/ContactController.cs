@@ -9,10 +9,12 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
+  
     public class ContactController : Controller
     {
         ContactManager contactManager = new ContactManager(new EfContactDal());
         ContactValidator contactValidator = new ContactValidator();
+       
         public ActionResult Index()
         {
             var contactValues = contactManager.GetList();

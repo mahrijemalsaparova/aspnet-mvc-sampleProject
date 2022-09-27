@@ -10,6 +10,7 @@ using System.Web.Security;
 
 namespace MvcProjeKampi.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -18,6 +19,7 @@ namespace MvcProjeKampi.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(Admin admin)
         {
@@ -33,10 +35,11 @@ namespace MvcProjeKampi.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View();
+            //return View();
         }
 
         [HttpGet]
+
         public ActionResult WriterLogin()
         {
             return View();

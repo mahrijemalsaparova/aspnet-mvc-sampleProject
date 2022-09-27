@@ -29,9 +29,9 @@ namespace BusinessLayer.Concrete
         }
          
         // Yazara ait başlıkların getirilmesi.
-        public List<Heading> GetListByWriter()
+        public List<Heading> GetListByWriter(int id)
         {
-            return _headingDal.List(x => x.WriterID == 1);
+            return _headingDal.List(x => x.WriterID == id);
         }
 
         public void HeadingAdd(Heading heading)

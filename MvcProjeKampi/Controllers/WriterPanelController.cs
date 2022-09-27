@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -13,16 +14,22 @@ namespace MvcProjeKampi.Controllers
     {
         HeadingManager headinManager = new HeadingManager(new EfHeadingDal());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+        Context context = new Context();
+      
         // GET: WriterPanel
         public ActionResult WriterProfile()
         {
             return View();
         }
     
-        public ActionResult MyHeading()
+        public ActionResult MyHeading(string p)
         {
-           
-            var values = headinManager.GetListByWriter();
+          
+            //sessionda tutulan mail adresinden id çekmeye çalışıyoruz
+            p = (string)Session["WriterMail"];
+            var writerIdInfo = context.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
+         
+           var values = headinManager.GetListByWriter(writerIdInfo);
             return View(values);
         }
 
@@ -30,6 +37,7 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult NewHeading()
         {
+          
           
             List<SelectListItem> valuecategory = (from x in categoryManager.GetList()
                                                   select new SelectListItem
@@ -47,8 +55,11 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult NewHeading(Heading heading)
         {
+            string writerMailInfo = (string)Session["WriterMail"];
+            var writerIdInfo = context.Writers.Where(x => x.WriterMail == writerMailInfo).Select(y => y.WriterID).FirstOrDefault();
+            ViewBag.d = writerIdInfo;
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            heading.WriterID = 1;
+            heading.WriterID = writerIdInfo;
             heading.HeadingStatus = true;
             headinManager.HeadingAdd(heading);
             return RedirectToAction("MyHeading");
