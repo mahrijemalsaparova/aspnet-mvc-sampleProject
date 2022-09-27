@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,13 @@ namespace MvcProjeKampi.Controllers
         {
             return View();
         }
-        public ActionResult MyContent()
+        public ActionResult MyContent(string p)
         {
-            var contentValues = contentManager.GetListByWriter();
+            //her giriş yapan yazar mailine ait id yi alma
+            Context context = new Context();
+            p = (string)Session["WriterMail"];
+            var writeridinfo = context.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
+            var contentValues = contentManager.GetListByWriter(writeridinfo);
             return View(contentValues);
          
         }
