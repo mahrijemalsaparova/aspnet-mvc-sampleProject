@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using FluentValidation.Results;
+using BusinessLayer.ValidationRules;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,22 +18,47 @@ namespace MvcProjeKampi.Controllers
     {
         HeadingManager headinManager = new HeadingManager(new EfHeadingDal());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+        WriterManager writerManager = new WriterManager(new EfWriterDal());
+        WriterValidator validationRules = new WriterValidator();
         Context context = new Context();
-      
+
         // GET: WriterPanel
-        public ActionResult WriterProfile()
+        [HttpGet]
+        public ActionResult WriterProfile(int id = 0)
         {
+            string p = (string)Session["WriterMail"];
+            id = context.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
+            var writerValue = writerManager.GetByID(id);
+            return View(writerValue);
+        }
+
+        [HttpPost]
+        public ActionResult WriterProfile(Writer writer)
+        {
+            ValidationResult validationResult = validationRules.Validate(writer);
+            if (validationResult.IsValid)
+            {
+                writerManager.WriterUpdate(writer);
+                return RedirectToAction("AllHeadings","WriterPanel");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
         }
-    
+
         public ActionResult MyHeading(string p)
         {
-          
+
             //sessionda tutulan mail adresinden id çekmeye çalışıyoruz
             p = (string)Session["WriterMail"];
             var writerIdInfo = context.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
-         
-           var values = headinManager.GetListByWriter(writerIdInfo);
+
+            var values = headinManager.GetListByWriter(writerIdInfo);
             return View(values);
         }
 
@@ -39,8 +66,8 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult NewHeading()
         {
-          
-          
+
+
             List<SelectListItem> valuecategory = (from x in categoryManager.GetList()
                                                   select new SelectListItem
                                                   {
@@ -48,7 +75,7 @@ namespace MvcProjeKampi.Controllers
                                                       Value = x.CategoryID.ToString()
                                                   }).ToList();
             ViewBag.vlc = valuecategory;
-            return View();    
+            return View();
         }
 
 
@@ -65,7 +92,7 @@ namespace MvcProjeKampi.Controllers
             heading.HeadingStatus = true;
             headinManager.HeadingAdd(heading);
             return RedirectToAction("MyHeading");
-        
+
         }
 
         [HttpGet]
@@ -100,7 +127,7 @@ namespace MvcProjeKampi.Controllers
 
         //1 in anlamı sayfalama kaçtan başlıcak belirtmek için
 
-        public ActionResult AllHeadings( int page = 1)
+        public ActionResult AllHeadings(int page = 1)
         {
             var headings = headinManager.GetList().ToPagedList(page, 4);
             return View(headings);
