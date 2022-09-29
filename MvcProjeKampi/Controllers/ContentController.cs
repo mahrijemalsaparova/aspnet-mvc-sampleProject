@@ -24,15 +24,11 @@ namespace MvcProjeKampi.Controllers
         }
 
 
-        Context context = new Context();
-        public ActionResult GetAllContent(string p)
+        //Context context = new Context();
+        public ActionResult GetAllContent(string p="")
         {
-            var values = from x in context.Contents select x;
-            if (!string.IsNullOrEmpty(p))
-            {
-                values = values.Where(y => y.ContentValue.Contains(p));
-            }
-           
+            var values = contentManager.GetList(p);
+                
             return View(values.ToList());
 
         }

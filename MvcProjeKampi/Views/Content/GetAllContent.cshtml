@@ -7,7 +7,7 @@
 @using (Html.BeginForm("GetAllContent", "Content", FormMethod.Post))
 {
     <p>
-        Aranacak Kelimeyi Girin : @Html.TextBox("p")
+         Aranacak Kelimeyi Girin : @Html.TextBox("p")
         <input type="submit" value="Ara" />
     
     </p>
@@ -15,6 +15,6 @@
 }
 @foreach (var item in Model)
 {
-    <p>@item.ContentValue</p>
+    <p>@item.ContentID - @item.ContentValue</p>
 }
 
