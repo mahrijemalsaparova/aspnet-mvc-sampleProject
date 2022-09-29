@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -96,9 +98,11 @@ namespace MvcProjeKampi.Controllers
             return RedirectToAction("MyHeading");
         }
 
-        public ActionResult AllHeadings()
+        //1 in anlamı sayfalama kaçtan başlıcak belirtmek için
+
+        public ActionResult AllHeadings( int page = 1)
         {
-            var headings = headinManager.GetList();
+            var headings = headinManager.GetList().ToPagedList(page, 4);
             return View(headings);
         }
     }
