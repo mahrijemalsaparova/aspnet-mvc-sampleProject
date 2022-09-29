@@ -62,6 +62,12 @@ namespace MvcProjeKampi.Controllers
             }
            
         }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Headings", "Default");
+        }
 
     }
 }
