@@ -26,7 +26,7 @@ namespace MvcProjeKampi.Controllers
             ct.Add(new CategoryClass()
             {
                 CategoryName="Yazılım",
-                CategoryCount=8
+                CategoryCount= 8
             });
             ct.Add(new CategoryClass()
             {
@@ -37,6 +37,11 @@ namespace MvcProjeKampi.Controllers
             {
                 CategoryName = "Spor",
                 CategoryCount = 1
+            });
+            ct.Add(new CategoryClass()
+            {
+                CategoryName = "Sanat",
+                CategoryCount = 5
             });
 
             return ct;
